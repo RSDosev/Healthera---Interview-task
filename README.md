@@ -1,1 +1,1 @@
-# Healthera---Interview-task
+# Healthera - Interview tech task application

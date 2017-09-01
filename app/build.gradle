@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    compileOptions {
+        // For retrolambda support
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    defaultConfig {
+        applicationId "com.radodosev.healtherapharmacies"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_BASE_URL", "\"https://api.84r.co/\""
+        buildConfigField "String", "API_USER_ID", "\"221a1420-56a0-11e7-8ff8-a40f7533d1c6\""
+        buildConfigField "String", "API_CLIENT_ID", "\"mzUFOsQJLESdYOY\""
+        buildConfigField "String", "API_TOKEN", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl9pZCI6ImJmM2Q2NTYwLTg4Y2ItMTFlNy05OTUzLWIzNmQ3MDFkYWU2NSIsImV4cCI6MTUxMjIxOTQzMiwiaWF0IjoxNTAzNTc5NDMyLCJ1c2VyX2lkIjoiMjIxYTE0MjAtNTZhMC0xMWU3LThmZjgtYTQwZjc1MzNkMWM2In0.uF73Y4EhO5rQzofpALQKDYzJNNAFaaG_d-UHSqAZbIQ\""
+        buildConfigField "int", "API_CONNECT_TIMEOUT", "60"
+        buildConfigField "int", "API_READ_TIMEOUT", "60"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.hannesdorfmann.mosby3:mvi:3.0.4'
+
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+
+    compile 'com.github.bumptech.glide:glide:4.0.0'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.jakewharton.timber:timber:+'
+    compile 'io.reactivex.rxjava2:rxandroid:+'
+    compile 'io.reactivex.rxjava2:rxjava:+'
+    compile 'com.jakewharton.rxbinding2:rxbinding:+'
+
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    testCompile 'junit:junit:4.12'
+}
